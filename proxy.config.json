@@ -1,0 +1,6 @@
+{
+    "/product": {
+        "target": "http://localhost:3300/product",
+        "secure": false
+    }
+}
