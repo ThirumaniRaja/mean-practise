@@ -81,6 +81,28 @@ app.get('/product/:product_id', async (req, res) => {
     }
 });
 
+// to show all list
+app.get('/product', async (req, res) => {
+    try {
+        // Query to fetch all product details
+        const [rows] = await db.execute(
+            'SELECT product_id, product_name, product_category, product_price FROM product'
+        );
+
+        // If no products are found, send a 404 response
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'No products found' });
+        }
+
+        // Send the product list as the response
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port);
