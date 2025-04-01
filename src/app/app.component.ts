@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Post } from './models/post.model';
+import { CommonService } from './services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,17 @@ import { Post } from './models/post.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-addedPostList:any = [];
+  constructor(private commonService: CommonService) {
+
+  }
+  addedPostList: any = [];
   // onPostAdded(post: Post){
+
   //   this.addedPostList.push(post);
   // }
+  ngOnInit(): void {
+    this.commonService.getData().subscribe(data => {
+      console.log("app-com", data)
+    })
+  }
 }

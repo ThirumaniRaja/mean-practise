@@ -2,7 +2,7 @@
 <mat-accordion multi="true" *ngIf="postList.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let post of postList">
     <mat-expansion-panel-header>
-      {{post.title}}
+      <h1>Hi {{post.title}}</h1>
     </mat-expansion-panel-header>
     <p>
       {{post.content}}
